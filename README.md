@@ -21,10 +21,14 @@ Contains the data used in the trial by trial BOLD models reported in the paper. 
 
 ## Analysis of Behavioral Data from Experiment 1 (lottery & information choice task)
 Run Behavior_analysis_Expt1.m
+
 Inputs = Data_main_task.mat, Data_ratings.mat, Data_replication.mat (make sure these files are saved in the same directory as the script)
+
 Outputs = analysis of choice and ratings data (Figure 2), analysis of replication data (Figure S2), general linear mixed-effect models predicting information choice (Table S1 and Figure S3), control analysis testing for Pavlovian conditioning (Figure S4)
 
 ## Analysis of Behavioral Data from Experiment 2 (stock market task)
 Run Behavior_analysis_Expt2.m
+
 Input = Data_market_task.mat
+
 Ouput = extract necessary data and plot Figure 6
