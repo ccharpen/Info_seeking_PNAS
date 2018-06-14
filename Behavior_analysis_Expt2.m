@@ -40,6 +40,7 @@ data_allsubs_zc(isnan(data_allsubs_zc(:,2)),:)=[]; %remove missed trials
 Data_tbl_zc = array2table(data_allsubs_zc, 'VariableNames',{'sub' 'choice' 'valWTP' 'sMC' 'aMC' 'PV' 'NLI' 'T' 'CP'});
 
 %Model - wtp: fixed & random effects of each predictor + fixed & random intercepts
+warning('off')
 glme = fitglme(Data_tbl_zc,'valWTP ~ 1 + sMC + aMC + PV + NLI + T + CP + (1|sub) + (-1+sMC|sub) + (-1+aMC|sub) + (-1+PV|sub) + (-1+NLI|sub) + (-1+T|sub) + (-1+CP|sub)',...
     'Distribution','Normal','Link','identity','FitMethod','Laplace','DummyVarCoding','effects');
 %note: the stats for all fixed effects are in glme.Coefficients table
@@ -65,7 +66,7 @@ for i=1:length(sub_list)
 end
 
 %% Now plot the whole figure
-figure('Position',[500,200,1300,1000]); 
+figure('Position',[100,100,1000,750]); 
 %Figure 6B
 subplot(2,2,1); hold on
 plot([-20 20],[0 0],'-','Color',[0.7 0.7 0.7],'LineWidth',0.5)
@@ -89,7 +90,7 @@ ax.FontSize = 9;
 ax.XTick = [1 2];
 ax.XTickLabel = {'Signed', 'Absolute'};
 xlabel('Market Change')
-ylabel('Estimate (predicting signed WTP)')
+ylabel('Effect on Signed WTP')
 title('Fig. 6C')
 %Figure 6D
 subplot(2,2,3); hold on

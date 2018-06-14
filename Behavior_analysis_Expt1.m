@@ -88,7 +88,7 @@ gdrL(:,3) = b(1) + b(2)*gdrL(:,1) + b(3)*gdrL(:,2);
 
 
 %Plot Figure 2
-figure('Position',[500,100,1100,1150]); 
+figure('Position',[100,100,800,850]); 
 %Fig 2A
 subplot(3,2,1); hold on
 bar(1,mean(Choice_GL(:,1)),0.7,'FaceColor',orange);
@@ -148,7 +148,7 @@ ax = gca;
 ax.FontSize = 9;
 ax.XTickLabel = [];
 ax.XLabel.String = 'Participant';
-ax.YLabel.String = {'Valence-dependent bias'; 'in information choice'};
+ax.YLabel.String = {'Valence-dependent'; 'information choice'};
 title('Fig 2E')
 %Fig 2F
 subplot(3,2,6); hold on
@@ -217,7 +217,7 @@ gdcL_p(:,3) = b(1) + b(2)*gdcL_p(:,1) + b(3)*gdcL_p(:,2);
 
 
 %Plot Figure S2
-figure('Position',[500,400,1100,800]); 
+figure('Position',[150,150,800,600]); 
 %Fig S2A
 subplot(2,2,1); hold on
 bar(1,mean(Choice_GL_p(:,1)),0.7,'FaceColor',orange);
@@ -252,7 +252,7 @@ ax = gca;
 ax.FontSize = 9;
 ax.XTickLabel = [];
 ax.XLabel.String = 'Participant';
-ax.YLabel.String = {'Valence-dependent bias'; 'in information choice'};
+ax.YLabel.String = {'Valence-dependent'; 'information choice'};
 title('Fig S2C')
 %Fig S2D
 subplot(2,2,4); hold on
@@ -295,7 +295,7 @@ glme5 = fitglme(Data_tbl,'choice ~ 1 + (1|subject)',...
     'Distribution','Binomial','Link','logit','FitMethod','Laplace','DummyVarCoding','effects');
 
 %plot Figure S3
-figure('Position', [600,500,800,600])
+figure('Position', [200,200,600,400])
 bar(double(glme1.Coefficients(2:4,2)),0.5,'FaceColor',grey); hold on
 errorbar(double(glme1.Coefficients(2:4,2)),double(glme1.Coefficients(2:4,3)),'k.','LineWidth',1)
 ax = gca;
@@ -359,7 +359,7 @@ for i=1:length(sub_list_nd)
 end
         
 %Plot Figure S4
-figure('Position',[500,100,1100,1150]); 
+figure('Position',[100,100,800,800]); 
 %Fig S4A
 subplot(3,2,1); hold on
 plot(nanmean(InfoCh.Gain1(2:end,:),1)*100, 'LineStyle','none', 'Marker','o', 'MarkerFaceColor','k', 'MarkerEdgeColor','k', 'MarkerSize',3)
@@ -409,21 +409,22 @@ subplot(3,2,5); hold on
 bar(1,mean(GLM_EV_outc(:,1)),0.5,'FaceColor',[0.3 0.3 0.3]);
 bar(2,mean(GLM_EV_outc(:,2)),0.5,'FaceColor',[0.8 0.8 0.8]);
 errorbar([1,2],mean(GLM_EV_outc(:,1:2),1),std(GLM_EV_outc(:,1:2),1)/sqrt(length(sub_list_nd)),'k.')
+ylim([-0.4 1])
 ax = gca;
 ax.FontSize = 9;
 ax.XTick = [1 2];
 ax.XTickLabel = {'Current EV' 'Previous outcome'};
 ylabel('Beta predicting choice')
 title('Fig S4E')
-%Fig 2F
+%Fig S4F
 subplot(3,2,6); hold on
 plot(GLM_EV_outc(:,3), GLM_EV_outc(:,1), 'LineStyle','none', 'Marker','o', 'MarkerFaceColor',[0.3 0.3 0.3], 'MarkerEdgeColor','k', 'MarkerSize',3)
 plot(GLM_EV_outc(:,3), GLM_EV_outc(:,2), 'LineStyle','none', 'Marker','o', 'MarkerFaceColor',[0.8 0.8 0.8], 'MarkerEdgeColor','k', 'MarkerSize',3)
-legend({'Current EV','Previous outcome'},'FontSize',8)
 lin_fit1 = glmfit(GLM_EV_outc(:,3), GLM_EV_outc(:,1));
 lin_fit2 = glmfit(GLM_EV_outc(:,3), GLM_EV_outc(:,2));
 plot([-0.24 0.39], [lin_fit1(1)+lin_fit1(2)*(-0.24) lin_fit1(1)+lin_fit1(2)*0.39], '--', 'Color',[0.3 0.3 0.3],'LineWidth',1)
 plot([-0.24 0.39], [lin_fit2(1)+lin_fit2(2)*(-0.24) lin_fit2(1)+lin_fit2(2)*0.39], '--', 'Color',[0.8 0.8 0.8],'LineWidth',1)
+legend({'Current EV','Previous outcome','Current EV fit','Previous outcome fit'},'FontSize',8)
 xlim([-0.2 0.4])
 ylim([-2 6])
 ax = gca;
