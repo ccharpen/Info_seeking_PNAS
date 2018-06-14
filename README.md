@@ -16,7 +16,7 @@ Contains the behavioral data from the lottery & information choice task replicat
 ### - Data_market_task.mat
 Contains the behavioral data from the stock market task (Experiment 2) (N=42 subjects, 200 trials per subject)
 
-### - BOLD per trials
+### - BOLD_per_trial.mat
 Contains the data used in the trial by trial BOLD models reported in the paper. This is a cell structure where each row is a subject, each column is a block (columns 1 & 2 = gain blocks, columns 3 & 4 = loss blocks). Then within each cell, the columns are as follows: P(win/lose), Knowledge (1) or Ignorance (0) cue delivered, IPE, IPE x P(win/lose), BOLD in VTA/SN ROI, BOLD in NAc ROI, BOLD in VTA/SN 'losses' ROI, BOLD in NAc 'losses' ROI, BOLD in mOFC functional cluster. The BOLD signal is extracted from the different ROI during presentation of the knowledge/ignorance cue.
 
 ## Analysis of Behavioral Data from Experiment 1 (lottery & information choice task)
